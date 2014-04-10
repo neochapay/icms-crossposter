@@ -1,9 +1,9 @@
 <?php
 if(!defined('VALID_CMS_ADMIN')) { die('ACCESS DENIED'); }
 
-cpAddPathway('Календарь', '?view=components&do=config&id='.$_REQUEST['id']);
+cpAddPathway('Кросспостинг', '?view=components&do=config&id='.$_REQUEST['id']);
 
-$inCore->loadModel('calendar');
+$inCore->loadModel('crossposter');
 $model = new cms_model_calendar();
 $categories = $model->getAllCategories();
 echo '<h3>Кросспостинг</h3>';
@@ -41,24 +41,24 @@ if($opt=='saveconfig')
 ?>
 <script type="text/javascript" src="/admin/components/calendar/colorpicker/colorpicker.js"></script>
 <form action="index.php?view=components&amp;do=config&amp;id=<?php echo $_REQUEST['id'];?>" method="post" name="optform" target="_self" id="optform">
-  <div id="config_tabs" style="margin-top:12px;">
+  <div id="config_tabs" style="margin-top:12px;" class="uitabs">
     <ul id="tabs">
         <li><a href="#basic"><span>Общие</span></a></li>
     </ul>
-  </div>
-  <div id="basic">
-    <table width="100%">
-      <tr>
-	<td>
-	  <strong>Плашка перед постом: </strong>
-	</td>
-      </tr>
-      <tr>
-	<td>
-	  <textarea style="width: 100%" name="post_prefix"><?php print $cfg['post_prefix']?></textarea>
-	</td>
-      </tr>        
-    </table>
+    <div id="basic">
+      <table width="100%">
+	<tr>
+	  <td>
+	    <strong>Плашка перед постом: </strong>
+	  </td>
+	</tr>
+	<tr>
+	  <td>
+	    <textarea style="width: 100%" name="post_prefix"><?php print $cfg['post_prefix']?></textarea>
+	  </td>
+	</tr>        
+      </table>
+    </div>
   </div>
   <p>
     <input name="opt" type="hidden" value="saveconfig" />
